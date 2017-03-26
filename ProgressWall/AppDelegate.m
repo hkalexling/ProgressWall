@@ -16,11 +16,15 @@
 #define kScreenHeight 1800.0
 #define kTextWidth kScreenWidth * 0.8
 
+#define kFull @"▓"
+#define kEmpty @"░"
+#define kBlockNumber 15
+
 @interface AppDelegate ()
 
 @end
 
-@implementation AppDelegate{
+@implementation AppDelegate {
 	NSStatusItem *item;
 }
 
@@ -38,7 +42,7 @@
 	
 	[self workspaceChanged:nil];
 	
-	[[[[self imageWithText:[self progressString]]
+	[[[[self imageWithText:[self fullProgressString]]
 		 flattenMap:^__kindof RACSignal * _Nullable(NSImage *img) {
 		return [self saveImageToSupport:img];
 	}] subscribeOn:[RACScheduler mainThreadScheduler]]
@@ -162,8 +166,7 @@
 
 #pragma mark - Date Utility
 
-- (NSDate *)firstDateOfYear:(NSInteger)year
-{
+- (NSDate *)firstDateOfYear:(NSInteger)year {
 	NSDateComponents *dc = [[NSDateComponents alloc] init];
 	dc.year = year;
 	dc.month = 1;
@@ -171,7 +174,7 @@
 	return [[NSCalendar currentCalendar] dateFromComponents:dc];
 }
 
-- (NSInteger)numberOfDaysInYear{
+- (NSInteger)numberOfDaysInYear {
 	NSCalendar *cal = [NSCalendar currentCalendar];
 	NSInteger year = [cal component:NSCalendarUnitYear fromDate:[NSDate date]];
 	
@@ -182,7 +185,7 @@
 	return [components day];
 }
 
-- (NSInteger)dayInYear{
+- (NSInteger)dayInYear {
 	NSCalendar *cal = [NSCalendar currentCalendar];
 	NSInteger dayInYear = [cal ordinalityOfUnit:NSCalendarUnitDay inUnit:NSCalendarUnitYear forDate:[NSDate date]];
 	return dayInYear;
@@ -192,8 +195,26 @@
 	return (CGFloat)[self dayInYear]/(CGFloat)[self numberOfDaysInYear];
 }
 
+#pragma mark - Progress Bar Constructors
+
 - (NSString *)progressString {
 	return [NSString stringWithFormat:@"%.0f%%", [self progress] * 100];
+}
+
+- (NSString *)progressBarString {
+	NSInteger fullNumber = [self progress] * kBlockNumber;
+	NSString *str = @"";
+	for (NSUInteger i = 0; i < fullNumber; i++){
+		str = [str stringByAppendingString:kFull];
+	}
+	for (NSUInteger i = 0; i < kBlockNumber - fullNumber; i++){
+		str = [str stringByAppendingString:kEmpty];
+	}
+	return str;
+}
+
+- (NSString *)fullProgressString {
+	return [NSString stringWithFormat:@"%@ %@", [self progressBarString], [self progressString]];
 }
 
 @end
