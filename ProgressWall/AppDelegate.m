@@ -31,7 +31,7 @@
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
 	
 	item = [[NSStatusBar systemStatusBar] statusItemWithLength:NSSquareStatusItemLength];
-	item.button.image = nil;
+	item.button.image = [NSImage imageNamed:@"status"];
 	
 	NSMenu *menu = [NSMenu new];
 	[menu addItem:[[NSMenuItem alloc] initWithTitle:@"Quit" action:@selector(quit) keyEquivalent:@"q"]];
@@ -41,18 +41,6 @@
 	[[[NSWorkspace sharedWorkspace] notificationCenter] addObserver:self selector:@selector(workspaceChanged:) name:NSWorkspaceActiveSpaceDidChangeNotification object:[NSWorkspace sharedWorkspace]];
 	
 	[self workspaceChanged:nil];
-	
-	[[[[self imageWithText:[self fullProgressString]]
-		 flattenMap:^__kindof RACSignal * _Nullable(NSImage *img) {
-		return [self saveImageToSupport:img];
-	}] subscribeOn:[RACScheduler mainThreadScheduler]]
-	 subscribeNext:^(NSString *path) {
-		NSLog(@"path: %@", path);
-	} error:^(NSError * _Nullable error) {
-		NSLog(@"error: %@", error);
-	} completed:^{
-		NSLog(@"completed");
-	}];
 }
 
 - (void)quit {
@@ -60,10 +48,68 @@
 }
 
 - (void)workspaceChanged: (NSNotification *)notification{
+	void (^errorHandler)(NSError *error) = ^(NSError *error){
+		NSLog(@"error: %@", error);
+	};
+	void (^completedHandler)() = ^{
+		NSLog(@"completed");
+	};
 	
+	[self checkNeedRegenerate:^(BOOL need, NSString *path) {
+		if (need) {
+			[[[self setWallpaper] subscribeOn:[RACScheduler mainThreadScheduler]] subscribeError:errorHandler completed:completedHandler];
+		}
+		else{
+			[[[self setWallpaper:path] subscribeOn:[RACScheduler mainThreadScheduler]] subscribeError:errorHandler completed:completedHandler];
+		}
+	}];
 }
 
 #pragma mark - Utility
+
+- (void)checkNeedRegenerate: (void (^)(BOOL need, NSString *path)) handler {
+	NSFileManager *manager = [NSFileManager defaultManager];
+	NSDirectoryEnumerator *enumerator = [manager enumeratorAtPath:[self supportPath]];
+	
+	NSString *file;
+	if (file = [enumerator nextObject]) {
+		if ([[file pathExtension] isEqualToString:@"jpg"]) {
+			if ([[file stringByDeletingPathExtension] isEqualToString:[self progressString]]){
+				handler(NO, [[self supportPath] stringByAppendingPathComponent:file]);
+				return;
+			}
+		}
+	}
+	
+	handler(YES, nil);
+}
+
+- (RACSignal *)setWallpaper {
+	return [[self imageWithText:[self fullProgressString]] flattenMap:^__kindof RACSignal * _Nullable(NSImage *img) {
+		return [[self saveImageToSupport:img] flattenMap:^__kindof RACSignal * _Nullable(NSString *path) {
+			return [self setWallpaper:path];
+		}];
+	}];
+}
+
+- (RACSignal *)setWallpaper: (NSString *) path; {
+	return [RACSignal createSignal:^RACDisposable * _Nullable(id<RACSubscriber>  _Nonnull subscriber) {
+		NSString *thePath = [path copy];
+
+		NSURL *url = [NSURL fileURLWithPath:thePath];
+		NSArray *screens = [NSScreen screens];
+		for (NSScreen *screen in screens){
+			NSError *error;
+			[[NSWorkspace sharedWorkspace] setDesktopImageURL:url forScreen:screen options:@{} error:&error];
+			if (error){
+				[subscriber sendError: error];
+			}
+			[subscriber sendCompleted];
+		}
+		
+		return nil;
+	}];
+}
 
 - (RACSignal *)imageWithText: (NSString *) text {
 	return [RACSignal createSignal:^RACDisposable * _Nullable(id<RACSubscriber>  _Nonnull subscriber) {
@@ -108,9 +154,7 @@
 			
 			NSString *file;
 			while (file = [enumerator nextObject]) {
-				if ([[file pathExtension] isEqualToString:@"jpg"]) {
-					[manager removeItemAtPath:[[self supportPath] stringByAppendingPathComponent:file] error:&error];
-				}
+				[manager removeItemAtPath:[[self supportPath] stringByAppendingPathComponent:file] error:&error];
 			}
 			
 			dispatch_async(dispatch_get_main_queue(), ^{
@@ -144,7 +188,7 @@
 					}
 				}
 				
-				NSString *name = [NSString stringWithFormat:@"%@.jpg", @([[NSDate date] timeIntervalSince1970])];
+				NSString *name = [NSString stringWithFormat:@"%@.jpg", [self progressString]];
 				NSString *imgPath = [[self supportPath] stringByAppendingPathComponent:name];
 				
 				NSData *imageData = [image TIFFRepresentation];
