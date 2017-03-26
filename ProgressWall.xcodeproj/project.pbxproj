@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		711CB69B1E8825E60060B0DB /* PreferenceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 711CB69A1E8825E60060B0DB /* PreferenceViewController.m */; };
+		711CB69E1E8827030060B0DB /* Defaults.m in Sources */ = {isa = PBXBuildFile; fileRef = 711CB69D1E8827030060B0DB /* Defaults.m */; };
+		711CB6A11E8834CC0060B0DB /* PreferenceWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 711CB6A01E8834CC0060B0DB /* PreferenceWindowController.m */; };
 		7144222B1E87C20900A0F85B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7144222A1E87C20900A0F85B /* AppDelegate.m */; };
 		7144222E1E87C20900A0F85B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7144222D1E87C20900A0F85B /* main.m */; };
 		714422331E87C20900A0F85B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 714422321E87C20900A0F85B /* Assets.xcassets */; };
@@ -16,6 +19,12 @@
 
 /* Begin PBXFileReference section */
 		6C7F4596DF308979FC166699 /* Pods-ProgressWall.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProgressWall.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ProgressWall/Pods-ProgressWall.debug.xcconfig"; sourceTree = "<group>"; };
+		711CB6991E8825E60060B0DB /* PreferenceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferenceViewController.h; sourceTree = "<group>"; };
+		711CB69A1E8825E60060B0DB /* PreferenceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreferenceViewController.m; sourceTree = "<group>"; };
+		711CB69C1E8827030060B0DB /* Defaults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Defaults.h; sourceTree = "<group>"; };
+		711CB69D1E8827030060B0DB /* Defaults.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Defaults.m; sourceTree = "<group>"; };
+		711CB69F1E8834CC0060B0DB /* PreferenceWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferenceWindowController.h; sourceTree = "<group>"; };
+		711CB6A01E8834CC0060B0DB /* PreferenceWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreferenceWindowController.m; sourceTree = "<group>"; };
 		714422261E87C20900A0F85B /* ProgressWall.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ProgressWall.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		714422291E87C20900A0F85B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		7144222A1E87C20900A0F85B /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -79,6 +88,12 @@
 			children = (
 				714422291E87C20900A0F85B /* AppDelegate.h */,
 				7144222A1E87C20900A0F85B /* AppDelegate.m */,
+				711CB6991E8825E60060B0DB /* PreferenceViewController.h */,
+				711CB69A1E8825E60060B0DB /* PreferenceViewController.m */,
+				711CB69F1E8834CC0060B0DB /* PreferenceWindowController.h */,
+				711CB6A01E8834CC0060B0DB /* PreferenceWindowController.m */,
+				711CB69C1E8827030060B0DB /* Defaults.h */,
+				711CB69D1E8827030060B0DB /* Defaults.m */,
 				714422321E87C20900A0F85B /* Assets.xcassets */,
 				714422341E87C20900A0F85B /* Main.storyboard */,
 				714422371E87C20900A0F85B /* Info.plist */,
@@ -217,6 +232,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				711CB69B1E8825E60060B0DB /* PreferenceViewController.m in Sources */,
+				711CB6A11E8834CC0060B0DB /* PreferenceWindowController.m in Sources */,
+				711CB69E1E8827030060B0DB /* Defaults.m in Sources */,
 				7144222E1E87C20900A0F85B /* main.m in Sources */,
 				7144222B1E87C20900A0F85B /* AppDelegate.m in Sources */,
 			);
@@ -328,10 +346,12 @@
 			baseConfigurationReference = 6C7F4596DF308979FC166699 /* Pods-ProgressWall.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 9947S4AFL2;
 				INFOPLIST_FILE = ProgressWall/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_BUNDLE_IDENTIFIER = com.hkalexling.ProgressWall;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -342,10 +362,12 @@
 			baseConfigurationReference = D5B1ACF456A47AE1EEF09D6D /* Pods-ProgressWall.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 9947S4AFL2;
 				INFOPLIST_FILE = ProgressWall/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_BUNDLE_IDENTIFIER = com.hkalexling.ProgressWall;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -370,6 +392,7 @@
 				7144223C1E87C20900A0F85B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

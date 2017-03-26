@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16E144f" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11762"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Application-->
@@ -659,5 +659,126 @@
             </objects>
             <point key="canvasLocation" x="75" y="0.0"/>
         </scene>
+        <!--Window Controller-->
+        <scene sceneID="gna-f9-3vX">
+            <objects>
+                <windowController storyboardIdentifier="preferenceWindowController" id="gya-he-hu8" customClass="PreferenceWindowController" sceneMemberID="viewController">
+                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="PlQ-1E-HgH">
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
+                        <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+                        <rect key="contentRect" x="-1626" y="283" width="280" height="160"/>
+                        <rect key="screenRect" x="-1920" y="-30" width="1920" height="1057"/>
+                    </window>
+                    <connections>
+                        <segue destination="ZrH-Oh-pVK" kind="relationship" relationship="window.shadowedContentViewController" id="VH6-XS-iR5"/>
+                    </connections>
+                </windowController>
+                <customObject id="HaH-Jl-qA8" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="90" y="340"/>
+        </scene>
+        <!--Preference View Controller-->
+        <scene sceneID="VK8-hq-JCv">
+            <objects>
+                <viewController id="ZrH-Oh-pVK" customClass="PreferenceViewController" sceneMemberID="viewController">
+                    <view key="view" id="j8Y-VC-FEV">
+                        <rect key="frame" x="0.0" y="0.0" width="280" height="160"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GNd-fl-1mX">
+                                <rect key="frame" x="18" y="113" width="134" height="27"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Background Color" id="NoK-yp-Y5i">
+                                    <font key="font" size="16" name="Avenir-Book"/>
+                                    <color key="textColor" red="1" green="1" blue="1" alpha="0.84999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WZv-Rq-bOe">
+                                <rect key="frame" x="18" y="78" width="78" height="27"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Text Color" id="BMH-yz-gcg">
+                                    <font key="font" size="16" name="Avenir-Book"/>
+                                    <color key="textColor" red="1" green="1" blue="1" alpha="0.84999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <colorWell focusRingType="none" translatesAutoresizingMaskIntoConstraints="NO" id="EMO-ag-JID">
+                                <rect key="frame" x="216" y="115" width="44" height="23"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="23" id="LQB-P6-Jbl"/>
+                                    <constraint firstAttribute="width" constant="44" id="jac-zw-p0z"/>
+                                </constraints>
+                                <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="backgroundColorSet:" target="ZrH-Oh-pVK" id="lTn-7c-xPA"/>
+                                </connections>
+                            </colorWell>
+                            <button focusRingType="none" translatesAutoresizingMaskIntoConstraints="NO" id="3O5-tl-SqL">
+                                <rect key="frame" x="220" y="20" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="Fx6-w8-nHi"/>
+                                    <constraint firstAttribute="width" constant="40" id="pkD-OG-hyH"/>
+                                </constraints>
+                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="folder" imagePosition="only" alignment="center" focusRingType="none" imageScaling="proportionallyUpOrDown" inset="2" id="3gG-SH-hsn">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="folderBtnTapped:" target="ZrH-Oh-pVK" id="Rzp-nr-weS"/>
+                                </connections>
+                            </button>
+                            <button focusRingType="none" translatesAutoresizingMaskIntoConstraints="NO" id="80r-aa-m9t">
+                                <rect key="frame" x="170" y="20" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="QXz-gx-q0K"/>
+                                    <constraint firstAttribute="width" constant="40" id="vJ7-mK-djt"/>
+                                </constraints>
+                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="github" imagePosition="only" alignment="center" focusRingType="none" imageScaling="proportionallyUpOrDown" inset="2" id="8wX-FV-pIk">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="githubBtnTapped:" target="ZrH-Oh-pVK" id="A2E-mH-9rZ"/>
+                                </connections>
+                            </button>
+                            <colorWell focusRingType="none" translatesAutoresizingMaskIntoConstraints="NO" id="0QZ-1j-QsW">
+                                <rect key="frame" x="216" y="80" width="44" height="23"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="44" id="Hbo-lH-QnK"/>
+                                    <constraint firstAttribute="height" constant="23" id="Xr0-Jr-Pwu"/>
+                                </constraints>
+                                <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="textColorSet:" target="ZrH-Oh-pVK" id="7US-rA-BM2"/>
+                                </connections>
+                            </colorWell>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="WZv-Rq-bOe" firstAttribute="top" secondItem="GNd-fl-1mX" secondAttribute="bottom" constant="8" id="4bG-0C-74k"/>
+                            <constraint firstAttribute="trailing" secondItem="0QZ-1j-QsW" secondAttribute="trailing" constant="20" id="CWd-FX-FdT"/>
+                            <constraint firstAttribute="trailing" secondItem="3O5-tl-SqL" secondAttribute="trailing" constant="20" id="RUG-bM-3Ye"/>
+                            <constraint firstItem="WZv-Rq-bOe" firstAttribute="leading" secondItem="j8Y-VC-FEV" secondAttribute="leading" constant="20" id="S66-Rc-ZS3"/>
+                            <constraint firstItem="3O5-tl-SqL" firstAttribute="leading" secondItem="80r-aa-m9t" secondAttribute="trailing" constant="10" id="T1o-3Q-yme"/>
+                            <constraint firstAttribute="trailing" secondItem="EMO-ag-JID" secondAttribute="trailing" constant="20" id="Xs9-L3-fcV"/>
+                            <constraint firstAttribute="bottom" secondItem="3O5-tl-SqL" secondAttribute="bottom" constant="20" id="YHI-Vs-7Eq"/>
+                            <constraint firstAttribute="bottom" secondItem="80r-aa-m9t" secondAttribute="bottom" constant="20" id="e5E-yy-6yo"/>
+                            <constraint firstItem="0QZ-1j-QsW" firstAttribute="centerY" secondItem="WZv-Rq-bOe" secondAttribute="centerY" id="fSz-M0-gQL"/>
+                            <constraint firstItem="EMO-ag-JID" firstAttribute="centerY" secondItem="GNd-fl-1mX" secondAttribute="centerY" id="irK-4F-s1G"/>
+                            <constraint firstItem="GNd-fl-1mX" firstAttribute="top" secondItem="j8Y-VC-FEV" secondAttribute="top" constant="20" id="qbr-6A-kMs"/>
+                            <constraint firstItem="GNd-fl-1mX" firstAttribute="leading" secondItem="j8Y-VC-FEV" secondAttribute="leading" constant="20" id="vLD-MW-Amu"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="backgroundColorWell" destination="EMO-ag-JID" id="D8a-GY-iIS"/>
+                        <outlet property="textColorWell" destination="0QZ-1j-QsW" id="ydK-zz-Yu9"/>
+                    </connections>
+                </viewController>
+                <customObject id="JSt-F0-6BY" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="480.5" y="331.5"/>
+        </scene>
     </scenes>
+    <resources>
+        <image name="folder" width="200" height="148"/>
+        <image name="github" width="100" height="100"/>
+    </resources>
 </document>

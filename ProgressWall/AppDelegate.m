@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-#import <ReactiveObjC/ReactiveObjC.h>
+#import "Defaults.h"
 
 #define TICK NSDate *startTime = [NSDate date]
 #define TOCK NSLog(@"Time: %f", -[startTime timeIntervalSinceNow])
@@ -26,6 +26,7 @@
 
 @implementation AppDelegate {
 	NSStatusItem *item;
+	NSWindowController *preferenceWC;
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
@@ -34,6 +35,8 @@
 	item.button.image = [NSImage imageNamed:@"status"];
 	
 	NSMenu *menu = [NSMenu new];
+	[menu addItem:[[NSMenuItem alloc] initWithTitle:@"Preference" action:@selector(preference) keyEquivalent:@","]];
+	[menu addItem:[NSMenuItem separatorItem]];
 	[menu addItem:[[NSMenuItem alloc] initWithTitle:@"Quit" action:@selector(quit) keyEquivalent:@"q"]];
 	
 	item.menu = menu;
@@ -41,6 +44,12 @@
 	[[[NSWorkspace sharedWorkspace] notificationCenter] addObserver:self selector:@selector(workspaceChanged:) name:NSWorkspaceActiveSpaceDidChangeNotification object:[NSWorkspace sharedWorkspace]];
 	
 	[self workspaceChanged:nil];
+}
+
+- (void)preference {
+	preferenceWC = [[NSStoryboard storyboardWithName:@"Main" bundle:nil] instantiateControllerWithIdentifier:@"preferenceWindowController"];
+	[preferenceWC showWindow:self];
+	[NSApp activateIgnoringOtherApps:YES];
 }
 
 - (void)quit {
@@ -55,34 +64,12 @@
 		NSLog(@"completed");
 	};
 	
-	[self checkNeedRegenerate:^(BOOL need, NSString *path) {
-		if (need) {
-			[[[self setWallpaper] subscribeOn:[RACScheduler mainThreadScheduler]] subscribeError:errorHandler completed:completedHandler];
-		}
-		else{
-			[[[self setWallpaper:path] subscribeOn:[RACScheduler mainThreadScheduler]] subscribeError:errorHandler completed:completedHandler];
-		}
-	}];
+	[[[self setWallpaper]
+		subscribeOn:[RACScheduler mainThreadScheduler]]
+	 subscribeError:errorHandler completed:completedHandler];
 }
 
 #pragma mark - Utility
-
-- (void)checkNeedRegenerate: (void (^)(BOOL need, NSString *path)) handler {
-	NSFileManager *manager = [NSFileManager defaultManager];
-	NSDirectoryEnumerator *enumerator = [manager enumeratorAtPath:[self supportPath]];
-	
-	NSString *file;
-	if (file = [enumerator nextObject]) {
-		if ([[file pathExtension] isEqualToString:@"jpg"]) {
-			if ([[file stringByDeletingPathExtension] isEqualToString:[self progressString]]){
-				handler(NO, [[self supportPath] stringByAppendingPathComponent:file]);
-				return;
-			}
-		}
-	}
-	
-	handler(YES, nil);
-}
 
 - (RACSignal *)setWallpaper {
 	return [[self imageWithText:[self fullProgressString]] flattenMap:^__kindof RACSignal * _Nullable(NSImage *img) {
@@ -104,8 +91,8 @@
 			if (error){
 				[subscriber sendError: error];
 			}
-			[subscriber sendCompleted];
 		}
+		[subscriber sendCompleted];
 		
 		return nil;
 	}];
@@ -117,14 +104,14 @@
 		NSImage *img = [[NSImage alloc] initWithSize:NSMakeSize(kScreenWidth, kScreenHeight)];
 		NSDictionary *attr = @{
 													 NSFontAttributeName: [NSFont fontWithName:@"Avenir" size:120 ],
-													 NSForegroundColorAttributeName: [NSColor whiteColor]
+													 NSForegroundColorAttributeName: [Defaults getTextColor]
 													 };
 		NSAttributedString *attrStr = [[NSAttributedString alloc] initWithString:text attributes:attr];
 		CGRect boundRect = [attrStr boundingRectWithSize:CGSizeMake(kTextWidth, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading];
 		
 		[img lockFocus];
 		
-		[[NSColor blackColor] drawSwatchInRect:NSMakeRect(0, 0, kScreenWidth, kScreenHeight)];
+		[[Defaults getBackgroundColor] drawSwatchInRect:NSMakeRect(0, 0, kScreenWidth, kScreenHeight)];
 		
 		
 		NSRect rect = NSMakeRect((kScreenWidth - boundRect.size.width)/2, (kScreenHeight - boundRect.size.height)/2, boundRect.size.width, boundRect.size.height);
@@ -188,7 +175,7 @@
 					}
 				}
 				
-				NSString *name = [NSString stringWithFormat:@"%@.jpg", [self progressString]];
+				NSString *name = [NSString stringWithFormat:@"%@.jpg", @([[NSDate date] timeIntervalSince1970])];
 				NSString *imgPath = [[self supportPath] stringByAppendingPathComponent:name];
 				
 				NSData *imageData = [image TIFFRepresentation];
@@ -242,7 +229,7 @@
 #pragma mark - Progress Bar Constructors
 
 - (NSString *)progressString {
-	return [NSString stringWithFormat:@"%.0f%%", [self progress] * 100];
+	return [NSString stringWithFormat:@"%li%%", (long)([self progress] * 100)];
 }
 
 - (NSString *)progressBarString {

@@ -7,9 +7,12 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import <ReactiveObjC/ReactiveObjC.h>
 
 @interface AppDelegate : NSObject <NSApplicationDelegate>
 
+- (RACSignal *)setWallpaper; //regernerate image
+- (NSString *)supportPath;
 
 @end
 
