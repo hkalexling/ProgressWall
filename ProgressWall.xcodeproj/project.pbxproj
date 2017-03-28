@@ -14,10 +14,44 @@
 		7144222E1E87C20900A0F85B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7144222D1E87C20900A0F85B /* main.m */; };
 		714422331E87C20900A0F85B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 714422321E87C20900A0F85B /* Assets.xcassets */; };
 		714422361E87C20900A0F85B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 714422341E87C20900A0F85B /* Main.storyboard */; };
+		7174A4731E8A142300F24092 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7174A4721E8A142300F24092 /* NotificationCenter.framework */; };
+		7174A4791E8A142300F24092 /* TodayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7174A4781E8A142300F24092 /* TodayViewController.m */; };
+		7174A47C1E8A142300F24092 /* TodayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7174A47A1E8A142300F24092 /* TodayViewController.xib */; };
+		7174A4801E8A142300F24092 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7174A47E1E8A142300F24092 /* InfoPlist.strings */; };
+		7174A4831E8A142300F24092 /* Today.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 7174A4711E8A142300F24092 /* Today.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		7174A48B1E8A20C000F24092 /* Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 7174A48A1E8A20C000F24092 /* Utility.m */; };
+		7174A48D1E8A23E000F24092 /* Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 7174A48A1E8A20C000F24092 /* Utility.m */; };
+		7174A48E1E8A252A00F24092 /* Defaults.m in Sources */ = {isa = PBXBuildFile; fileRef = 711CB69D1E8827030060B0DB /* Defaults.m */; };
 		8FF40D04D4C68FC399C3B153 /* Pods_ProgressWall.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0A0F87C7176A6930503D6DB /* Pods_ProgressWall.framework */; };
+		A039F56111100FD5915E8837 /* Pods_Today.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C33BDCB61F556DCAD2F82CA4 /* Pods_Today.framework */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		7174A4811E8A142300F24092 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7144221E1E87C20900A0F85B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7174A4701E8A142300F24092;
+			remoteInfo = Today;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		7174A4871E8A142300F24092 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				7174A4831E8A142300F24092 /* Today.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		0CA27402F39EF6A7E6FECD1F /* Pods-Today.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Today.release.xcconfig"; path = "Pods/Target Support Files/Pods-Today/Pods-Today.release.xcconfig"; sourceTree = "<group>"; };
 		6C7F4596DF308979FC166699 /* Pods-ProgressWall.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProgressWall.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ProgressWall/Pods-ProgressWall.debug.xcconfig"; sourceTree = "<group>"; };
 		711CB6991E8825E60060B0DB /* PreferenceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferenceViewController.h; sourceTree = "<group>"; };
 		711CB69A1E8825E60060B0DB /* PreferenceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreferenceViewController.m; sourceTree = "<group>"; };
@@ -32,8 +66,20 @@
 		714422321E87C20900A0F85B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		714422351E87C20900A0F85B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		714422371E87C20900A0F85B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7174A4711E8A142300F24092 /* Today.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Today.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		7174A4721E8A142300F24092 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
+		7174A4761E8A142300F24092 /* Today.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Today.entitlements; sourceTree = "<group>"; };
+		7174A4771E8A142300F24092 /* TodayViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TodayViewController.h; sourceTree = "<group>"; };
+		7174A4781E8A142300F24092 /* TodayViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TodayViewController.m; sourceTree = "<group>"; };
+		7174A47B1E8A142300F24092 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/TodayViewController.xib; sourceTree = "<group>"; };
+		7174A47D1E8A142300F24092 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7174A47F1E8A142300F24092 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		7174A4891E8A20C000F24092 /* Utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utility.h; sourceTree = "<group>"; };
+		7174A48A1E8A20C000F24092 /* Utility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utility.m; sourceTree = "<group>"; };
 		B0A0F87C7176A6930503D6DB /* Pods_ProgressWall.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ProgressWall.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C33BDCB61F556DCAD2F82CA4 /* Pods_Today.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Today.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5B1ACF456A47AE1EEF09D6D /* Pods-ProgressWall.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProgressWall.release.xcconfig"; path = "Pods/Target Support Files/Pods-ProgressWall/Pods-ProgressWall.release.xcconfig"; sourceTree = "<group>"; };
+		FF5D8B9CD8E794CD6C1EF9B2 /* Pods-Today.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Today.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Today/Pods-Today.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,6 +91,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		7174A46E1E8A142300F24092 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7174A4731E8A142300F24092 /* NotificationCenter.framework in Frameworks */,
+				A039F56111100FD5915E8837 /* Pods_Today.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -53,6 +108,8 @@
 			children = (
 				6C7F4596DF308979FC166699 /* Pods-ProgressWall.debug.xcconfig */,
 				D5B1ACF456A47AE1EEF09D6D /* Pods-ProgressWall.release.xcconfig */,
+				FF5D8B9CD8E794CD6C1EF9B2 /* Pods-Today.debug.xcconfig */,
+				0CA27402F39EF6A7E6FECD1F /* Pods-Today.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -61,6 +118,8 @@
 			isa = PBXGroup;
 			children = (
 				B0A0F87C7176A6930503D6DB /* Pods_ProgressWall.framework */,
+				7174A4721E8A142300F24092 /* NotificationCenter.framework */,
+				C33BDCB61F556DCAD2F82CA4 /* Pods_Today.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -69,6 +128,7 @@
 			isa = PBXGroup;
 			children = (
 				714422281E87C20900A0F85B /* ProgressWall */,
+				7174A4741E8A142300F24092 /* Today */,
 				714422271E87C20900A0F85B /* Products */,
 				32F1E2933E618D576D4D7DC8 /* Pods */,
 				6474BA0236701EE5C3F19412 /* Frameworks */,
@@ -79,6 +139,7 @@
 			isa = PBXGroup;
 			children = (
 				714422261E87C20900A0F85B /* ProgressWall.app */,
+				7174A4711E8A142300F24092 /* Today.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -88,6 +149,8 @@
 			children = (
 				714422291E87C20900A0F85B /* AppDelegate.h */,
 				7144222A1E87C20900A0F85B /* AppDelegate.m */,
+				7174A4891E8A20C000F24092 /* Utility.h */,
+				7174A48A1E8A20C000F24092 /* Utility.m */,
 				711CB6991E8825E60060B0DB /* PreferenceViewController.h */,
 				711CB69A1E8825E60060B0DB /* PreferenceViewController.m */,
 				711CB69F1E8834CC0060B0DB /* PreferenceWindowController.h */,
@@ -110,6 +173,27 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		7174A4741E8A142300F24092 /* Today */ = {
+			isa = PBXGroup;
+			children = (
+				7174A4771E8A142300F24092 /* TodayViewController.h */,
+				7174A4781E8A142300F24092 /* TodayViewController.m */,
+				7174A47A1E8A142300F24092 /* TodayViewController.xib */,
+				7174A47D1E8A142300F24092 /* Info.plist */,
+				7174A47E1E8A142300F24092 /* InfoPlist.strings */,
+				7174A4751E8A142300F24092 /* Supporting Files */,
+			);
+			path = Today;
+			sourceTree = "<group>";
+		};
+		7174A4751E8A142300F24092 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				7174A4761E8A142300F24092 /* Today.entitlements */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -123,15 +207,36 @@
 				714422241E87C20900A0F85B /* Resources */,
 				14260EE6616E99043D9B5A94 /* [CP] Embed Pods Frameworks */,
 				9DBFBA3190DEB73B1E05C637 /* [CP] Copy Pods Resources */,
+				7174A4871E8A142300F24092 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				7174A4821E8A142300F24092 /* PBXTargetDependency */,
 			);
 			name = ProgressWall;
 			productName = ProgressWall;
 			productReference = 714422261E87C20900A0F85B /* ProgressWall.app */;
 			productType = "com.apple.product-type.application";
+		};
+		7174A4701E8A142300F24092 /* Today */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7174A4861E8A142300F24092 /* Build configuration list for PBXNativeTarget "Today" */;
+			buildPhases = (
+				EF5C3B3E503C41645B18A8B7 /* [CP] Check Pods Manifest.lock */,
+				7174A46D1E8A142300F24092 /* Sources */,
+				7174A46E1E8A142300F24092 /* Frameworks */,
+				7174A46F1E8A142300F24092 /* Resources */,
+				16E0B2DFBCE029CBC611F5DF /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Today;
+			productName = Today;
+			productReference = 7174A4711E8A142300F24092 /* Today.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -143,6 +248,11 @@
 				ORGANIZATIONNAME = "Alex Ling";
 				TargetAttributes = {
 					714422251E87C20900A0F85B = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = 9947S4AFL2;
+						ProvisioningStyle = Automatic;
+					};
+					7174A4701E8A142300F24092 = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = 9947S4AFL2;
 						ProvisioningStyle = Automatic;
@@ -163,6 +273,7 @@
 			projectRoot = "";
 			targets = (
 				714422251E87C20900A0F85B /* ProgressWall */,
+				7174A4701E8A142300F24092 /* Today */,
 			);
 		};
 /* End PBXProject section */
@@ -174,6 +285,15 @@
 			files = (
 				714422331E87C20900A0F85B /* Assets.xcassets in Resources */,
 				714422361E87C20900A0F85B /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7174A46F1E8A142300F24092 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7174A47C1E8A142300F24092 /* TodayViewController.xib in Resources */,
+				7174A4801E8A142300F24092 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -193,6 +313,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ProgressWall/Pods-ProgressWall-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		16E0B2DFBCE029CBC611F5DF /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Today/Pods-Today-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		9DBFBA3190DEB73B1E05C637 /* [CP] Copy Pods Resources */ = {
@@ -225,6 +360,21 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
+		EF5C3B3E503C41645B18A8B7 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -236,11 +386,30 @@
 				711CB6A11E8834CC0060B0DB /* PreferenceWindowController.m in Sources */,
 				711CB69E1E8827030060B0DB /* Defaults.m in Sources */,
 				7144222E1E87C20900A0F85B /* main.m in Sources */,
+				7174A48B1E8A20C000F24092 /* Utility.m in Sources */,
 				7144222B1E87C20900A0F85B /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		7174A46D1E8A142300F24092 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7174A48D1E8A23E000F24092 /* Utility.m in Sources */,
+				7174A48E1E8A252A00F24092 /* Defaults.m in Sources */,
+				7174A4791E8A142300F24092 /* TodayViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		7174A4821E8A142300F24092 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7174A4701E8A142300F24092 /* Today */;
+			targetProxy = 7174A4811E8A142300F24092 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		714422341E87C20900A0F85B /* Main.storyboard */ = {
@@ -249,6 +418,22 @@
 				714422351E87C20900A0F85B /* Base */,
 			);
 			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		7174A47A1E8A142300F24092 /* TodayViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7174A47B1E8A142300F24092 /* Base */,
+			);
+			name = TodayViewController.xib;
+			sourceTree = "<group>";
+		};
+		7174A47E1E8A142300F24092 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7174A47F1E8A142300F24092 /* en */,
+			);
+			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -373,6 +558,38 @@
 			};
 			name = Release;
 		};
+		7174A4841E8A142300F24092 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = FF5D8B9CD8E794CD6C1EF9B2 /* Pods-Today.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = Today/Today.entitlements;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 9947S4AFL2;
+				INFOPLIST_FILE = Today/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.hkalexling.ProgressWall.Today;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		7174A4851E8A142300F24092 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0CA27402F39EF6A7E6FECD1F /* Pods-Today.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = Today/Today.entitlements;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 9947S4AFL2;
+				INFOPLIST_FILE = Today/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.hkalexling.ProgressWall.Today;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -390,6 +607,15 @@
 			buildConfigurations = (
 				7144223B1E87C20900A0F85B /* Debug */,
 				7144223C1E87C20900A0F85B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7174A4861E8A142300F24092 /* Build configuration list for PBXNativeTarget "Today" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7174A4841E8A142300F24092 /* Debug */,
+				7174A4851E8A142300F24092 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -7,6 +7,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "Utility.h"
 
 @interface PreferenceViewController : NSViewController
 

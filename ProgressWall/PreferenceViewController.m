@@ -7,8 +7,6 @@
 //
 
 #import "PreferenceViewController.h"
-#import "Defaults.h"
-#import "AppDelegate.h"
 
 #define kGitHubURL @"https://github.com/hkalexling/ProgressWall"
 
@@ -29,7 +27,7 @@
 }
 
 - (void)regenerate {
-	[[[(AppDelegate *)[NSApplication sharedApplication].delegate setWallpaper]
+	[[[Utility setWallpaper]
 	 subscribeOn:[RACScheduler mainThreadScheduler]]
 	 subscribeError:^(NSError * _Nullable error) {
 		 NSLog(@"error: %@", error);
@@ -53,7 +51,7 @@
 }
 
 - (IBAction)folderBtnTapped:(NSButton *)sender {
-	[[NSWorkspace sharedWorkspace] openFile:[(AppDelegate *)[NSApplication sharedApplication].delegate supportPath]];
+	[[NSWorkspace sharedWorkspace] openFile:[Utility supportPath]];
 }
 
 @end
